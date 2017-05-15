@@ -3,15 +3,42 @@
 namespace app\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use \yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use app\models\News;
 
 class NewsController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+          'access' => [
+              'class' => AccessControl::className(),
+              'only' => ['index', 'create', 'view'],
+              'rules' => [
+                  [
+                  'actions' => ['index', 'create', 'view'],
+                  'allow' => true,
+                  'roles' => ['@'],
+                  ],
+              ],
+          ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
+          'error' => 'yii\web\ErrorAction',
+        ];
+    }
+
     public function actionIndex()
     {
-        $allnews = News::find()->all();
+        $allnews = News::find()
+            ->joinWith('user')
+            ->all();
 
         return $this->render('index', [
             'allnews' => $allnews,

@@ -34,28 +34,33 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            !Yii::$app->user->isGuest ? (['label' => 'Profile', 'url' => ['/profile']]) : '',
+    if(Yii::$app->user->isGuest) {
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
 
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
+                ['label' => 'Home', 'url' => ['/']],
+                ['label' => 'About', 'url' => ['/site/about']],
+                ['label' => 'Contact', 'url' => ['/site/contact']],
+            ],
+        ]);
+    } else {
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
+                ['label' => 'DashBoard', 'url' => ['/']],
+                ['label' => 'Test News', 'url' => ['/news']],
+                ['label' => 'MarketPlace', 'url' => ['/marketplace']],
+                ['label' => 'Shedules', 'url' => ['/shedules']],
+                '<li>',
+                Html::beginForm(['/site/logout'], 'post'),
+                Html::submitButton(
+                  'Logout ('.Yii::$app->user->identity->username.')', ['class' => 'btn btn-link logout']
+                ),
+                Html::endForm()
+            ],
+        ]);
+    }
     NavBar::end();
     ?>
 

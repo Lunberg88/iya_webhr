@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'full')->textarea(['rows' => 7]) ?>
 
+                <?= $form->field($model, 'user_id')->hiddenInput(['value' => Yii::$app->user->id]) ?>
+
                 <?= Html::submitButton('Create', ['class' => 'btn btn-primary', 'name' => 'create-news']) ?>
 
                 <?php ActiveForm::end(); ?>

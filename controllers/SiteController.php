@@ -26,7 +26,7 @@ class SiteController extends Controller
                 'only' => ['logout', 'index', 'about', 'contact', 'login'],
                 'rules' => [
                     [
-                        'actions' => ['login'],
+                        'actions' => ['login', 'about', 'contact'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
