@@ -14,5 +14,6 @@ use yii\helpers\Html;
     <?php foreach($allnews as $news): { ?>
    id: <?=$news->id; ?> / author: <?=$news->user->username; ?> / date: <?=$news->date; ?>
 <p><?=$news->story; ?></p>
+    <p><a class="btn btn-default" href="news/view/<?=$news->id; ?>">Read more &raquo;</a></p>
 <?php } endforeach; ?>
 </p>

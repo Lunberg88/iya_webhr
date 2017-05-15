@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 
-$this->title = 'View news';
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['/news']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -21,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?=$model->id; ?> / <?=$model->user_id; ?> <?=$model->date; ?>
                 <p><?=$model->story; ?></p>
+                <p><?=$model->full; ?></p>
 
                 </p>
 

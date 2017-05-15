@@ -44,6 +44,10 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                    'news/<action:\w+>' => 'news/<action>',
+                    '<controller:\w+>/<id:\w+>' => '<controller>',
+                    '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
 
