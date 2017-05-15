@@ -7,11 +7,11 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\User;
+//use app\models\User;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\SignupForm;
-use yii\helpers\ArrayHelper;
+//use app\models\SignupForm;
+//use yii\helpers\ArrayHelper;
 
 class SiteController extends Controller
 {
@@ -138,6 +138,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+    /*
     public function actionSignup()
     {
         if (Yii::$app->user->isGuest) {
@@ -156,5 +157,6 @@ class SiteController extends Controller
             return $this->goHome();
         }
     }
+    */
 
 }
